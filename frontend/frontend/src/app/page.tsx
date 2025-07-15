@@ -1,9 +1,16 @@
 import Image from "next/image";
 
+/**
+ * Home page component
+ * This is the main landing page for the StablePay application
+ * Currently displays Next.js starter content - will be replaced with actual StablePay content
+ */
 export default function Home() {
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
+      {/* Main content area */}
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+        {/* Temporary Next.js logo - replace with StablePay branding */}
         <Image
           className="dark:invert"
           src="/next.svg"
@@ -12,6 +19,8 @@ export default function Home() {
           height={38}
           priority
         />
+        
+        {/* Development instructions - remove when building actual app */}
         <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
           <li className="mb-2 tracking-[-.01em]">
             Get started by editing{" "}
@@ -25,6 +34,7 @@ export default function Home() {
           </li>
         </ol>
 
+        {/* Action buttons - temporary Next.js links */}
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           <a
             className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
@@ -51,6 +61,8 @@ export default function Home() {
           </a>
         </div>
       </main>
+      
+      {/* Footer with temporary Next.js links */}
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"

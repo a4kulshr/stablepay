@@ -7,4 +7,10 @@
    - Network:      http://192.168.2.152:3000
 
  ✓ Starting...
- ✓ Ready in 591ms
+ ✓ Ready in 579ms
+ ○ Compiling /rates ...
+ ✓ Compiled /rates in 1361ms
+ GET /rates/ 200 in 1617ms
+ ✓ Compiled / in 295ms
+ GET / 200 in 383ms
+ GET /rates/ 200 in 155ms

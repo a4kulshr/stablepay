@@ -1,12 +1,14 @@
 {
-  "name": "frontend",
+  "name": "stablepay-frontend",
   "version": "0.1.0",
   "private": true,
+  "description": "Frontend application for StablePay - Secure payment processing platform",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "react": "19.1.0",

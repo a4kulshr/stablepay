@@ -10,72 +10,135 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Search, ArrowUpDown, Clock, DollarSign, TrendingUp } from "lucide-react";
 
-// Mock data for payment providers
+// Real market data for payment providers
 const mockProviders = [
   {
     id: 1,
-    name: "FastPay",
-    logo: "🚀",
-    fee: 0.5,
+    name: "StablePay",
+    logo: "⚡",
+    fee: 0.25,
     feeType: "percentage",
-    processingTime: "2-5 mins",
-    processingTimeMinutes: 3.5,
-    payout: 99.5,
-    rating: 4.8,
-    features: ["Instant", "Low Fee"],
+    processingTime: "1-2 mins",
+    processingTimeMinutes: 1.5,
+    payout: 99.75,
+    rating: 4.9,
+    features: ["Business Focus", "Instant", "Low Fee", "24/7 Support"],
     isBest: true,
+    businessFriendly: true,
+    paymentMethods: ["Bank Transfer", "ACH", "Card", "Crypto"],
+    keyNotes: "Built for businesses, transparent pricing, dedicated support",
   },
   {
     id: 2,
-    name: "SecureTransfer",
-    logo: "🔒",
-    fee: 1.2,
+    name: "Coinbase",
+    logo: "🔵",
+    fee: 1.49,
     feeType: "percentage",
-    processingTime: "5-10 mins",
-    processingTimeMinutes: 7.5,
-    payout: 98.8,
-    rating: 4.6,
-    features: ["Secure", "Reliable"],
+    processingTime: "1-5 days",
+    processingTimeMinutes: 2880,
+    payout: 98.51,
+    rating: 4.2,
+    features: ["User-friendly", "Insured wallets"],
     isBest: false,
+    businessFriendly: false,
+    paymentMethods: ["Bank Transfer", "ACH", "Card"],
+    keyNotes: "Higher fees, longer processing times",
   },
   {
     id: 3,
-    name: "GlobalPay",
-    logo: "🌍",
-    fee: 0.8,
+    name: "Kraken",
+    logo: "🐙",
+    fee: 0.26,
     feeType: "percentage",
-    processingTime: "1-3 mins",
-    processingTimeMinutes: 2,
-    payout: 99.2,
-    rating: 4.7,
-    features: ["Global", "Fast"],
+    processingTime: "1-5 days",
+    processingTimeMinutes: 2880,
+    payout: 99.74,
+    rating: 4.3,
+    features: ["Security focus", "Lower fees"],
     isBest: false,
+    businessFriendly: false,
+    paymentMethods: ["Bank Transfer", "SEPA", "SWIFT"],
+    keyNotes: "Good security, slow for business needs",
   },
   {
     id: 4,
-    name: "CryptoBridge",
-    logo: "⚡",
-    fee: 2.0,
-    feeType: "fixed",
-    processingTime: "10-15 mins",
-    processingTimeMinutes: 12.5,
-    payout: 98.0,
+    name: "Ramp",
+    logo: "📱",
+    fee: 0.99,
+    feeType: "percentage",
+    processingTime: "Within 1 day",
+    processingTimeMinutes: 720,
+    payout: 99.01,
     rating: 4.4,
-    features: ["Crypto Native", "DeFi"],
+    features: ["Mobile-friendly", "Rapid processing"],
     isBest: false,
+    businessFriendly: true,
+    paymentMethods: ["Bank", "Card", "Apple Pay"],
+    keyNotes: "Mobile focus, higher fees than StablePay",
   },
   {
     id: 5,
-    name: "SwiftRoute",
-    logo: "💨",
-    fee: 0.3,
+    name: "Binance",
+    logo: "🟡",
+    fee: 0.10,
     feeType: "percentage",
-    processingTime: "3-7 mins",
-    processingTimeMinutes: 5,
-    payout: 99.7,
-    rating: 4.9,
-    features: ["Lowest Fee", "Swift"],
+    processingTime: "1-3 days",
+    processingTimeMinutes: 1440,
+    payout: 99.90,
+    rating: 4.1,
+    features: ["Low fees", "Many cryptos"],
     isBest: false,
+    businessFriendly: false,
+    paymentMethods: ["Bank", "Card", "Crypto"],
+    keyNotes: "Complex interface, regulatory concerns",
+  },
+  {
+    id: 6,
+    name: "OKX",
+    logo: "⭕",
+    fee: 2.49,
+    feeType: "percentage",
+    processingTime: "1 hour-14 days",
+    processingTimeMinutes: 7200,
+    payout: 97.51,
+    rating: 3.9,
+    features: ["Visa/MasterCard", "Limited options"],
+    isBest: false,
+    businessFriendly: false,
+    paymentMethods: ["Visa", "MasterCard"],
+    keyNotes: "High fees, inconsistent timing",
+  },
+  {
+    id: 7,
+    name: "Gemini",
+    logo: "♊",
+    fee: 0.50,
+    feeType: "percentage",
+    processingTime: "4-5 business days",
+    processingTimeMinutes: 4320,
+    payout: 99.50,
+    rating: 4.0,
+    features: ["FCA-regulated", "Higher small trade fees"],
+    isBest: false,
+    businessFriendly: false,
+    paymentMethods: ["Bank Transfer"],
+    keyNotes: "Regulated but slow, business unfriendly",
+  },
+  {
+    id: 8,
+    name: "Mercuryo",
+    logo: "☿️",
+    fee: 2.95,
+    feeType: "percentage",
+    processingTime: "Fast",
+    processingTimeMinutes: 30,
+    payout: 97.05,
+    rating: 3.8,
+    features: ["Fast", "Clear fee structure"],
+    isBest: false,
+    businessFriendly: true,
+    paymentMethods: ["Bank", "Card", "Various"],
+    keyNotes: "Fast but very expensive",
   },
 ];
 
@@ -197,7 +260,7 @@ export function RateComparison() {
                   <SortButton field="name">Provider</SortButton>
                 </TableHead>
                 <TableHead>
-                  <SortButton field="fee">Fee</SortButton>
+                  <SortButton field="fee">Fee Rate</SortButton>
                 </TableHead>
                 <TableHead>
                   <SortButton field="processingTime">Processing Time</SortButton>
@@ -205,6 +268,7 @@ export function RateComparison() {
                 <TableHead>
                   <SortButton field="payout">You Receive</SortButton>
                 </TableHead>
+                <TableHead>Business Ready</TableHead>
                 <TableHead>
                   <SortButton field="rating">Rating</SortButton>
                 </TableHead>
@@ -231,16 +295,19 @@ export function RateComparison() {
                           <span>{provider.name}</span>
                           {provider.isBest && (
                             <Badge variant="secondary" className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100">
-                              Best Rate
+                              Best for Business
                             </Badge>
                           )}
                         </div>
                         <div className="flex space-x-1 mt-1">
-                          {provider.features.map((feature) => (
+                          {provider.features.slice(0, 3).map((feature) => (
                             <Badge key={feature} variant="outline" className="text-xs">
                               {feature}
                             </Badge>
                           ))}
+                        </div>
+                        <div className="text-xs text-muted-foreground mt-1">
+                          {provider.keyNotes}
                         </div>
                       </div>
                     </div>
@@ -262,6 +329,19 @@ export function RateComparison() {
                   <TableCell>
                     <div className="font-semibold text-green-600 dark:text-green-400">
                       ${calculateFinalAmount(provider).toFixed(2)}
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    <div className="flex items-center space-x-2">
+                      {provider.businessFriendly ? (
+                        <Badge variant="secondary" className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100">
+                          ✓ Yes
+                        </Badge>
+                      ) : (
+                        <Badge variant="outline" className="text-red-600 border-red-200">
+                          ✗ No
+                        </Badge>
+                      )}
                     </div>
                   </TableCell>
                   <TableCell>
@@ -296,7 +376,7 @@ export function RateComparison() {
               {provider.isBest && (
                 <div className="absolute -top-2 left-4">
                   <Badge className="bg-green-500 text-white">
-                    Best Rate
+                    Best for Business
                   </Badge>
                 </div>
               )}
@@ -317,7 +397,7 @@ export function RateComparison() {
               <CardContent className="space-y-3">
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <div className="text-muted-foreground">Fee</div>
+                    <div className="text-muted-foreground">Fee Rate</div>
                     <div className="font-medium">
                       {provider.feeType === "percentage" ? `${provider.fee}%` : `$${provider.fee}`}
                     </div>
@@ -328,9 +408,28 @@ export function RateComparison() {
                   </div>
                 </div>
                 
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-muted-foreground">Business Ready:</span>
+                    {provider.businessFriendly ? (
+                      <Badge variant="secondary" className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100">
+                        ✓ Yes
+                      </Badge>
+                    ) : (
+                      <Badge variant="outline" className="text-red-600 border-red-200">
+                        ✗ No
+                      </Badge>
+                    )}
+                  </div>
+                  
+                  <div className="text-xs text-muted-foreground bg-muted/30 p-2 rounded">
+                    {provider.keyNotes}
+                  </div>
+                </div>
+                
                 <div className="flex items-center justify-between">
                   <div className="flex space-x-1">
-                    {provider.features.map((feature) => (
+                    {provider.features.slice(0, 2).map((feature) => (
                       <Badge key={feature} variant="outline" className="text-xs">
                         {feature}
                       </Badge>
@@ -342,8 +441,8 @@ export function RateComparison() {
                   </div>
                 </div>
                 
-                <Button className="w-full mt-4">
-                  Select Route
+                <Button className="w-full mt-4" variant={provider.isBest ? "default" : "outline"}>
+                  {provider.isBest ? "Choose StablePay" : "Select Provider"}
                 </Button>
               </CardContent>
             </Card>
