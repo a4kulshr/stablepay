@@ -25,24 +25,75 @@ The goal is to help you maintain a big picture as well as the progress of the ta
 - Add debug information to stderr while keeping the main output clean in stdout for better pipeline integration
 - When using seaborn styles in matplotlib, use 'seaborn-v0_8' instead of 'seaborn' as the style name due to recent seaborn version changes
 - Use 'gpt-4o' as the model name for OpenAI's GPT-4 with vision capabilities
+- **UI/UX Fix**: Don't mix motion.tr with shadcn/ui TableRow components. Use motion.div wrapper with display: contents instead to maintain table structure while adding animations.
 
 # Scratchpad
 
-## Current Task: Create Intern Prompts for StablePay Frontend Demo
+## Current Task: UI/UX Design Intern - StablePay Frontend Demo
 
 ### Project Overview:
-- Building a frontend demo for StablePay
-- Tech stack: Next.js (React), Tailwind CSS, shadcn/ui, Framer Motion, ethers.js, WalletConnect/MetaMask
-- Features: Checkout Widget Page, Rate Comparison Page, Global Layout
-- Styling: Dark/light toggle, sleek theme with rounded corners, soft shadows
+Working on the StablePay frontend demo located in `frontend/stablepay-frontend/`
+- Tech stack: Next.js 15.4.1, React 19.1.0, Tailwind CSS v4, shadcn/ui, Framer Motion
+- Current state: Landing page with hero, features, testimonials, pricing sections
+- Design system: oklch colors, dark/light mode support, Geist fonts
+
+### My Role as UI/UX Design Intern:
+Creating beautiful, intuitive, and responsive user interfaces with smooth animations
+within the existing technical architecture.
 
 ### Task Progress:
-[X] Create prompt for Blockchain Intern
-[X] Create prompt for UI/UX Design Intern 
-[X] Create prompt for Frontend Architecture Intern
-[X] Review and refine all prompts
+[X] 1. Create checkout widget with modal functionality
+[X] 2. Build rate comparison page with table/card layout
+[X] 3. Add navigation header with responsive menu
+[X] 4. Fix React error #299 (motion.tr conflict with TableRow)
+[ ] 5. Test application functionality
+[ ] 6. Enhance design system with animations
+[ ] 7. Ensure mobile responsiveness throughout
+[ ] 8. Add micro-animations and interactions
+[ ] 9. Implement proper loading states
 
-### Key Requirements:
-1. **Checkout Widget Page** - "Pay with StablePay" button → modal → amount input → currency selector → wallet connect → confirm → success state
-2. **Rate Comparison Page** - Provider comparison table/grid with fees, payouts, ETA
-3. **Global Layout** - Header with nav, footer, consistent theming 
+### Completed Components:
+1. **Checkout Widget** (`/checkout` page) ✅
+   - "Pay with StablePay" button with hover effects
+   - Modal with step-by-step flow: amount → wallet → processing → success/error
+   - Smooth animations with Framer Motion
+   - Responsive design with mobile-first approach
+
+2. **Rate Comparison Page** (`/rates` page) ✅
+   - Provider comparison table for desktop
+   - Card layout for mobile
+   - Sort/filter functionality
+   - Best rate highlighting with green badges
+   - Search capability
+   - **Fixed**: Table animation conflict resolved
+
+3. **Navigation Header** ✅
+   - Logo with StablePay branding
+   - Responsive navigation menu
+   - Mobile hamburger menu with slide-out
+   - Theme toggle integration
+
+### Bug Fixes:
+- **React Error #299**: Fixed mixing of motion.tr with TableRow by using motion.div wrapper with display: contents
+
+### Created Components:
+- `components/checkout/checkout-widget.tsx` - Main checkout interface
+- `components/checkout/checkout-modal.tsx` - Full checkout flow with animations
+- `components/rates/rate-comparison.tsx` - Rate comparison with table/card views
+- `components/layout/header.tsx` - Navigation header with responsive design
+- `components/ui/badge.tsx` - Badge component for UI elements
+
+### Next Steps:
+1. Test the application functionality (checkout, rates, navigation)
+2. Add micro-animations to existing components
+3. Enhance loading states and transitions
+4. Ensure perfect mobile responsiveness
+5. Add page transitions and smooth scrolling
+6. Polish animations and interactions
+
+### Current Architecture:
+- Layout: `src/app/layout.tsx` - includes header, theme provider
+- Pages: `/checkout`, `/rates` - new pages created
+- Components: Organized by feature (checkout, rates, layout)
+- Styling: Tailwind CSS with custom design tokens
+- Animations: Framer Motion for smooth interactions 

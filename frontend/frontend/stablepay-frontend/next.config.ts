@@ -1,10 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  reactStrictMode: false,
-  experimental: {
-    optimizePackageImports: ['react', 'react-dom']
-  }
+  /* config options here */
 };
 
 export default nextConfig;
