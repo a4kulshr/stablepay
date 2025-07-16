@@ -1,8 +1,10 @@
 import { CheckoutWidget } from "@/components/checkout/checkout-widget";
+import { Header } from "@/components/layout/header";
 
 export default function CheckoutPage() {
   return (
     <div className="min-h-screen bg-background">
+      <Header />
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-2xl mx-auto text-center">
           <h1 className="text-4xl font-bold mb-6">Demo Checkout</h1>

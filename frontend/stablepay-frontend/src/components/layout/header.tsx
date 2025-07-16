@@ -14,7 +14,6 @@ export function Header() {
     { href: "/", label: "Home" },
     { href: "/checkout", label: "Checkout" },
     { href: "/rates", label: "Rates" },
-    { href: "/about", label: "About" },
   ];
 
   return (

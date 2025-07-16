@@ -63,13 +63,12 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+            className="flex justify-center mb-12"
           >
-            <Button size="lg" className="text-lg px-8 py-6">
-              Get Started <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 py-6">
-              Learn More
+            <Button size="lg" className="text-lg px-8 py-6" asChild>
+              <a href="/rates">
+                Get Started <ArrowRight className="ml-2 w-5 h-5" />
+              </a>
             </Button>
           </motion.div>
         </div>

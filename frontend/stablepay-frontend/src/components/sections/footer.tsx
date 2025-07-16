@@ -6,17 +6,8 @@ import { Button } from "@/components/ui/button";
 
 const footerLinks = {
   Product: [
-    { name: "Features", href: "#features" },
     { name: "Rates", href: "/rates" },
-    { name: "Security", href: "#security" },
-  ],
-  Company: [
-    { name: "About Us", href: "#about" },
-    { name: "Contact", href: "#contact" },
-  ],
-  Legal: [
-    { name: "Privacy Policy", href: "#privacy" },
-    { name: "Terms of Service", href: "#terms" },
+    { name: "Checkout", href: "/checkout" },
   ],
 };
 
