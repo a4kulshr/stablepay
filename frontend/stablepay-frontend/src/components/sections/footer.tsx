@@ -7,30 +7,16 @@ import { Button } from "@/components/ui/button";
 const footerLinks = {
   Product: [
     { name: "Features", href: "#features" },
-    { name: "Pricing", href: "#pricing" },
-    { name: "API Documentation", href: "#api" },
+    { name: "Rates", href: "/rates" },
     { name: "Security", href: "#security" },
-    { name: "Integrations", href: "#integrations" },
   ],
   Company: [
     { name: "About Us", href: "#about" },
-    { name: "Careers", href: "#careers" },
-    { name: "Press", href: "#press" },
     { name: "Contact", href: "#contact" },
-    { name: "Blog", href: "#blog" },
-  ],
-  Support: [
-    { name: "Help Center", href: "#help" },
-    { name: "Developer Docs", href: "#docs" },
-    { name: "Status Page", href: "#status" },
-    { name: "Community", href: "#community" },
-    { name: "Contact Support", href: "#support" },
   ],
   Legal: [
     { name: "Privacy Policy", href: "#privacy" },
     { name: "Terms of Service", href: "#terms" },
-    { name: "Cookie Policy", href: "#cookies" },
-    { name: "Compliance", href: "#compliance" },
   ],
 };
 

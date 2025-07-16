@@ -29,9 +29,6 @@ export function HeroSection() {
               <Button variant="ghost" size="sm">
                 Dashboard
               </Button>
-              <Button variant="ghost" size="sm">
-                Wizard
-              </Button>
               <ThemeToggle />
             </div>
           </div>

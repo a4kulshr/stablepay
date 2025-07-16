@@ -1,59 +1,42 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Star } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, TrendingUp, Clock, DollarSign, Star } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
-const pricingTiers = [
+const featuredRates = [
   {
-    name: "Starter",
-    price: "$29",
-    period: "month",
-    description: "Perfect for small businesses getting started",
-    features: [
-      "Up to 1,000 transactions/month",
-      "Basic analytics dashboard",
-      "Email support",
-      "Standard security features",
-      "2 payment methods",
-      "Basic API access",
-    ],
-    popular: false,
+    name: "StablePay",
+    logo: "⚡",
+    fee: 0.25,
+    processingTime: "1-2 mins",
+    payout: 99.75,
+    rating: 4.9,
+    features: ["Business Focus", "Instant", "Low Fee"],
+    isBest: true,
   },
   {
-    name: "Professional",
-    price: "$99",
-    period: "month",
-    description: "Ideal for growing businesses",
-    features: [
-      "Up to 10,000 transactions/month",
-      "Advanced analytics & reporting",
-      "Priority support",
-      "Enhanced security features",
-      "All payment methods",
-      "Full API access",
-      "Custom integrations",
-      "Multi-currency support",
-    ],
-    popular: true,
+    name: "Coinbase",
+    logo: "🔵",
+    fee: 1.49,
+    processingTime: "1-5 days",
+    payout: 98.51,
+    rating: 4.2,
+    features: ["User-friendly"],
+    isBest: false,
   },
   {
-    name: "Enterprise",
-    price: "Custom",
-    period: "contact us",
-    description: "For large-scale operations",
-    features: [
-      "Unlimited transactions",
-      "Custom analytics dashboard",
-      "24/7 dedicated support",
-      "Enterprise security features",
-      "White-label solutions",
-      "Custom API endpoints",
-      "SLA guarantees",
-      "Dedicated account manager",
-    ],
-    popular: false,
+    name: "Kraken",
+    logo: "🐙",
+    fee: 0.50,
+    processingTime: "1-3 days",
+    payout: 99.50,
+    rating: 4.4,
+    features: ["Security focus"],
+    isBest: false,
   },
 ];
 
@@ -62,13 +45,23 @@ export function PricingSection() {
     <section className="py-24 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <motion.h2
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+          >
+            <Badge variant="outline" className="mb-4">
+              <TrendingUp className="w-4 h-4 mr-2" />
+              Real-Time Market Data
+            </Badge>
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
             className="text-3xl sm:text-4xl font-bold text-foreground mb-4"
           >
-            Simple, Transparent Pricing
+            Compare Payment Rates
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -76,55 +69,69 @@ export function PricingSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-lg text-muted-foreground max-w-2xl mx-auto"
           >
-            Choose the perfect plan for your business. All plans include our core security features.
+            See how StablePay stacks up against the competition with transparent fees and business-focused features.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {pricingTiers.map((tier, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
+          {featuredRates.map((provider, index) => (
             <motion.div
-              key={tier.name}
+              key={provider.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
               className="relative"
             >
-              {tier.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium flex items-center space-x-1">
-                    <Star className="w-4 h-4" />
-                    <span>Most Popular</span>
+              <Card className={`h-full transition-all duration-300 hover:shadow-lg ${
+                provider.isBest ? 'ring-2 ring-primary' : ''
+              }`}>
+                {provider.isBest && (
+                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                    <Badge className="bg-primary text-primary-foreground">
+                      <Star className="w-3 h-3 mr-1" />
+                      Best for Business
+                    </Badge>
                   </div>
-                </div>
-              )}
-              
-              <Card className={`h-full ${tier.popular ? 'ring-2 ring-primary' : ''}`}>
-                <CardHeader className="text-center pb-8">
-                  <CardTitle className="text-2xl font-bold">{tier.name}</CardTitle>
-                  <CardDescription className="text-base">{tier.description}</CardDescription>
-                  <div className="mt-4">
-                    <span className="text-4xl font-bold text-foreground">{tier.price}</span>
-                    <span className="text-muted-foreground ml-2">/{tier.period}</span>
+                )}
+                <CardHeader className="text-center pb-4">
+                  <div className="text-4xl mb-2">{provider.logo}</div>
+                  <CardTitle className="text-xl">{provider.name}</CardTitle>
+                  <div className="flex items-center justify-center gap-1 text-sm text-muted-foreground">
+                    <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    <span>{provider.rating}</span>
                   </div>
                 </CardHeader>
-                
-                <CardContent className="pt-0">
-                  <ul className="space-y-3 mb-8">
-                    {tier.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-start space-x-3">
-                        <Check className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-sm text-muted-foreground">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  
-                  <Button 
-                    className="w-full" 
-                    variant={tier.popular ? "default" : "outline"}
-                    size="lg"
-                  >
-                    {tier.name === "Enterprise" ? "Contact Sales" : "Get Started"}
-                  </Button>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <DollarSign className="w-4 h-4 text-green-600" />
+                        <span className="text-sm">Fee</span>
+                      </div>
+                      <span className="font-semibold">{provider.fee}%</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <Clock className="w-4 h-4 text-blue-600" />
+                        <span className="text-sm">Processing</span>
+                      </div>
+                      <span className="font-semibold">{provider.processingTime}</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <TrendingUp className="w-4 h-4 text-purple-600" />
+                        <span className="text-sm">You Get</span>
+                      </div>
+                      <span className="font-semibold">${provider.payout}</span>
+                    </div>
+                    <div className="flex flex-wrap gap-1 mt-4">
+                      {provider.features.map((feature) => (
+                        <Badge key={feature} variant="secondary" className="text-xs">
+                          {feature}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>
@@ -135,14 +142,17 @@ export function PricingSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-center mt-12"
+          className="text-center"
         >
-          <p className="text-muted-foreground mb-4">
-            All plans include 14-day free trial • No setup fees • Cancel anytime
+          <Link href="/rates">
+            <Button size="lg" className="group mb-4">
+              View Complete Rate Comparison
+              <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </Link>
+          <p className="text-muted-foreground">
+            Compare 8+ providers with real-time market data and business features
           </p>
-          <Button variant="link" className="text-primary">
-            View detailed feature comparison →
-          </Button>
         </motion.div>
       </div>
     </section>
